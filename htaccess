@@ -1,0 +1,10 @@
+
+#deny direct ip access, its possible to deny DNS name
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^000\.000\.000\.000(.*)$
+RewriteRule .* - [F,L]
+
+#universal www -> http redirect
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
